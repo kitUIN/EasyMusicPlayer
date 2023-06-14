@@ -1,5 +1,6 @@
 # EasyMusicPlayer 简易音乐播放器
-本人数据结构课设,使用的是 `C++/WinRT` + `Xaml Islands`(使用[Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml))
+本人数据结构课设,使用的是 `C++/WinRT` + `Xaml Islands`(使用[Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml))  
+半成品,有一些界面的用户设计还未完成(比如:搜索 等)
 ## 使用前提
 您需要满足以下前置知识:
 - C++ 11/17 语法, Win32相关操作
@@ -24,6 +25,8 @@
 - `EasyMusicPlayer` > `MusicAdapter`类用于HashMap与Music操作
 - `music_config.json`是缓存文件,用来实现音乐列表持续化
 - `MusicTestFolder`是用于测试的音乐文件夹
+## 展示
+![](https://files.catbox.moe/oj1r9c.png)
 ## 鸣谢(排名不分先后)
 Co-Worker: `ProtectEMmm` (负责数据结构部分)  
 Project: [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
