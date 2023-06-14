@@ -5,6 +5,7 @@
 - C++ 11/17 语法, Win32相关操作
 - [C++/WinRT UWP 相关开发知识](https://learn.microsoft.com/zh-cn/windows/uwp/cpp-and-winrt-apis/)
   - Xaml 语法,控件`MediaPlayerElement` `ListView`等,模板使用,事件等操作
+  - MIDL 3 语法
   - 集合 
   - x:Bind绑定
   - 并发和异步操作
