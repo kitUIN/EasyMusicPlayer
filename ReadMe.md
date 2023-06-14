@@ -2,7 +2,7 @@
 本人数据结构课设,使用的是 `C++/WinRT` + `Xaml Islands`(使用[Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml))
 ## 使用前提
 您需要满足以下前置知识:
-- C++ 17 语法, Win32相关操作
+- C++ 11/17 语法, Win32相关操作
 - [C++/WinRT UWP 相关开发知识](https://learn.microsoft.com/zh-cn/windows/uwp/cpp-and-winrt-apis/)
   - Xaml 语法,控件`MediaPlayerElement` `ListView`等,模板使用,事件等操作
   - 集合 
@@ -24,5 +24,5 @@
 - `music_config.json`是缓存文件,用来实现音乐列表持续化
 - `MusicTestFolder`是用于测试的音乐文件
 ## 鸣谢(排名不分先后)
-Co-Worker: (负责数据结构部分)  
-Project:[Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
+Co-Worker: `ProtectEMmm` (负责数据结构部分)  
+Project: [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
