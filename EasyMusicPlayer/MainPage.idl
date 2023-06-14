@@ -1,0 +1,13 @@
+﻿import "Music.idl";
+import "MusicAdapter.idl";
+namespace EasyMusicPlayer
+{
+    [default_interface]
+    runtimeclass MainPage : Windows.UI.Xaml.Controls.Page, Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        MainPage();
+        Windows.Foundation.Collections.IObservableVector<EasyMusicPlayer.Music> MusicList{ get; };
+        Windows.Foundation.Collections.IObservableVector<EasyMusicPlayer.Music> PlayMusicList{ get; };
+        String PlayMode;
+    }
+}

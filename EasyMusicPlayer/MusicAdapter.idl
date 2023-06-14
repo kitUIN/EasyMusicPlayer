@@ -1,0 +1,18 @@
+﻿import "Music.idl";
+namespace EasyMusicPlayer
+{
+
+    [default_interface]
+    runtimeclass MusicAdapter
+    {
+        MusicAdapter();
+        EasyMusicPlayer.Music GetMusic(String path,String name,Int32 total);
+        void AddMusic(String path);
+        void RemoveMusic(String path);
+        EasyMusicPlayer.Music GetMusic(Windows.Data.Json.JsonObject json);
+        Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IObservableVector<EasyMusicPlayer.Music> > GetAll();
+        Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IObservableVector<EasyMusicPlayer.Music> > GetRandom();
+        Windows.Foundation.IAsyncAction LoadConfig();
+        Windows.Foundation.IAsyncAction SaveConfig();
+    }
+}

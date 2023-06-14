@@ -1,0 +1,301 @@
+﻿<Page
+    x:Class="EasyMusicPlayer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:EasyMusicPlayer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Color x:Key="SystemFrameAccentColor">#FF333333</Color>
+        <AcrylicBrush
+            x:Key="SystemFrameAcrylicAccentColor"
+            BackgroundSource="Backdrop"
+            FallbackColor="{ThemeResource SystemFrameAccentColor}"
+            TintColor="{ThemeResource SystemFrameAccentColor}"
+            TintOpacity="0.8" />
+    </Page.Resources>
+    <Grid MinWidth="600">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Padding="10,0,10,0"
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+            <DropDownButton
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+                <DropDownButton.Flyout>
+                    <MenuBarItemFlyout Placement="Bottom">
+                        <MenuFlyoutItem Click="ImportFile_Click" Text="导入文件">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xED0E;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Click="ImportFolder_Click" Text="导入文件夹">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE8F4;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuBarItemFlyout>
+                </DropDownButton.Flyout>
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <FontIcon Glyph="&#xECC8;" />
+                    <TextBlock Text="导入" />
+                </StackPanel>
+            </DropDownButton>
+            <AutoSuggestBox
+                Grid.Column="1"
+                Height="35"
+                Margin="10,0,10,0"
+                PlaceholderText="搜索"
+                QueryIcon="Find"
+                Visibility="Collapsed" />
+            <DropDownButton
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+                <DropDownButton.Flyout>
+                    <MenuBarItemFlyout Placement="Bottom">
+                        <MenuFlyoutItem
+                            x:Name="AZItem"
+                            Click="AZItem_Click"
+                            Text="A-Z">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon x:Name="AZ" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            x:Name="ZAItem"
+                            Click="ZAItem_Click"
+                            Text="Z-A">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon x:Name="ZA" Glyph="&#xE8FB;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuBarItemFlyout>
+                </DropDownButton.Flyout>
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <FontIcon Glyph="&#xE8CB;" />
+                    <TextBlock Text="排序" />
+                </StackPanel>
+            </DropDownButton>
+        </Grid>
+        <ScrollViewer Grid.Row="1" Padding="5">
+            <Grid>
+                <MediaPlayerElement
+                    x:Name="MusicPlayer"
+                    MaxWidth="400"
+                    AreTransportControlsEnabled="True"
+                    AutoPlay="False"
+                    Visibility="Collapsed" />
+                <ListView
+                    x:Name="MusicListView"
+                    Margin="10,10"
+                    AllowDrop="True"
+                    CanDragItems="True"
+                    CanReorderItems="True"
+                    IsItemClickEnabled="True"
+                    ItemClick="MusicListView_ItemClick"
+                    ItemsSource="{x:Bind MusicList}"
+                    Loaded="MusicListView_Loaded"
+                    SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Music">
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="15">
+                                    <FontIcon FontSize="23" Glyph="&#xEC4F;" />
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock FontSize="18" Text="{x:Bind Name}" />
+                                        <TextBlock FontSize="13" Text="{x:Bind Time}" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="5">
+                                    <HyperlinkButton Click="Remove_Click" Tag="{x:Bind}">
+                                        <SymbolIcon Symbol="Delete" />
+                                    </HyperlinkButton>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+        <Grid
+            Grid.Row="2"
+            Height="60"
+            Padding="10,0,10,0"
+            Background="{StaticResource AcrylicBackgroundFillColorDefaultBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="45" />
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="LeftButton"
+                Grid.Column="0"
+                Width="45"
+                Height="45"
+                Click="LeftButton_Click"
+                CornerRadius="45">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="上一首" />
+                </ToolTipService.ToolTip>
+                <SymbolIcon Symbol="Back" />
+            </Button>
+            <Button
+                x:Name="PlayingButton"
+                Grid.Column="1"
+                Width="55"
+                Height="55"
+                Click="PlayModeButton_Click"
+                CornerRadius="45">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Name="PlayingModeToolTip" Content="开始播放" />
+                </ToolTipService.ToolTip>
+                <FontIcon x:Name="PlayModeButtonIcon" Glyph="&#xE768;" />
+            </Button>
+            <Button
+                x:Name="RightButton"
+                Grid.Column="2"
+                Width="45"
+                Height="45"
+                Click="RightButton_Click"
+                CornerRadius="45">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="下一首" />
+                </ToolTipService.ToolTip>
+                <SymbolIcon Symbol="Forward" />
+            </Button>
+            <Image
+                Grid.Column="3"
+                Width="55"
+                Height="55"
+                Source="ms-appx:///Assets/Logo.png" />
+            <Grid Grid.Column="4" Padding="5,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    x:Name="MusicName"
+                    Grid.Row="0"
+                    Margin="0,4,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="17"
+                    TextTrimming="CharacterEllipsis" />
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        x:Name="MinTime"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        Text="00:00" />
+                    <ProgressBar
+                        x:Name="TimeBar"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        IsIndeterminate="False"
+                        Maximum="100"
+                        ShowPaused="False"
+                        Value="0" />
+                    <TextBlock
+                        x:Name="MaxTime"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        Text="00:00" />
+                </Grid>
+
+            </Grid>
+            <HyperlinkButton
+                x:Name="PlayModeButton"
+                Grid.Column="5"
+                Click="PlayMode_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="{x:Bind PlayMode, Mode=OneWay}" />
+                </ToolTipService.ToolTip>
+                <SymbolIcon x:Name="PlayModeIcon" Symbol="RepeatAll" />
+            </HyperlinkButton>
+            <HyperlinkButton
+                x:Name="MusicPlayListButton"
+                Grid.Column="6"
+                Click="MusicPlayListButton_Click">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout Placement="Top">
+                        <StackPanel Orientation="Vertical" Spacing="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="播放列表:" />
+                                <TextBlock Text="(" />
+                                <TextBlock Text="{x:Bind PlayMode, Mode=OneWay}" />
+                                <TextBlock Text=")" />
+                            </StackPanel>
+
+                            <ListView
+                                x:Name="FlyoutMusicListView"
+                                MaxHeight="200"
+                                Padding="0"
+                                IsItemClickEnabled="True"
+                                ItemClick="MusicListView_ItemClick"
+                                ItemsSource="{x:Bind PlayMusicList}"
+                                SelectionChanged="FlyoutMusicListView_SelectionChanged"
+                                SelectionMode="Single">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="local:Music">
+                                        <StackPanel Orientation="Horizontal" Spacing="15">
+                                            <FontIcon FontSize="14" Glyph="&#xEC4F;" />
+                                            <TextBlock FontSize="14" Text="{x:Bind Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Name="MusicPlayListButtonToolTip" Content="播放列表" />
+                </ToolTipService.ToolTip>
+                <SymbolIcon Symbol="MusicInfo" />
+            </HyperlinkButton>
+        </Grid>
+    </Grid>
+</Page>

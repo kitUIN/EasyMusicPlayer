@@ -1,0 +1,16 @@
+﻿namespace EasyMusicPlayer
+{
+    [default_interface]
+    runtimeclass Music
+    {
+        Music(String name,String icon,String path,Int32 total);
+        Music(Windows.Data.Json.JsonObject json);
+        String Name;
+        String Icon;
+        String Path;
+        Int32 Total;
+        String Time{ get; };
+        Windows.Data.Json.JsonObject ToJson();
+
+    }
+}

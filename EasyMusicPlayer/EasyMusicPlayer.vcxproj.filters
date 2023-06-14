@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Manifest Include="MileXamlBlankApp.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="API\Hash.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\HashMap.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\MergeSort.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\Pair.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\Random.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\Splay.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="API\Tree.hpp">
+      <Filter>API</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Music.idl" />
+    <Midl Include="MusicAdapter.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="API">
+      <UniqueIdentifier>{90beb018-d795-4612-9dc2-6020b3663a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{767b6d5c-95ea-412d-95eb-019de47d5b97}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Logo.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
