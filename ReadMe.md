@@ -19,11 +19,11 @@
   - 平方取中法 (`Random.hpp`)
   - 双进制hash (`Hash.hpp`,`HashMap.hpp`)
   - HashMap (`HashMap.hpp`,`Pair.hpp`,`Tree.hpp`,`Splay.hpp`)
-- `MainPage.xaml`为主界面
-- `Music`类为界面显示绑定实例
-- `MusicAdapter`类用于HashMap与Music操作
+- `EasyMusicPlayer` > `MainPage.xaml`为主界面
+- `EasyMusicPlayer` > `Music`类为界面显示绑定实例
+- `EasyMusicPlayer` > `MusicAdapter`类用于HashMap与Music操作
 - `music_config.json`是缓存文件,用来实现音乐列表持续化
-- `MusicTestFolder`是用于测试的音乐文件
+- `MusicTestFolder`是用于测试的音乐文件夹
 ## 鸣谢(排名不分先后)
 Co-Worker: `ProtectEMmm` (负责数据结构部分)  
 Project: [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
