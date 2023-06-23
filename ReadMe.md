@@ -28,5 +28,5 @@
 ## 展示
 ![](https://files.catbox.moe/oj1r9c.png)
 ## 鸣谢(排名不分先后)
-Co-Worker: `ProtectEMmm` (负责数据结构部分)  
+Co-Worker: [ProtectEMmm](https://github.com/ProtectEMmm) (负责数据结构部分)  
 Project: [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
