@@ -30,3 +30,6 @@
 ## 鸣谢(排名不分先后)
 Co-Worker: [ProtectEMmm](https://github.com/ProtectEMmm) (负责数据结构部分)  
 Project: [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
+## 可能问题:nuget包不存在,自己手动装一下,见下图
+![2c0b008793126ca6e17047dc317f8e9b](https://github.com/kitUIN/EasyMusicPlayer/assets/68675068/62da147b-f372-4a06-ab71-8205f0948038)
+
